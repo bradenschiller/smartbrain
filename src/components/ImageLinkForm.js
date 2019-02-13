@@ -1,10 +1,12 @@
 import React from 'react';
 
-const ImageLinkForm = () => {
+const ImageLinkForm = ({ onInputChange, onSubmit }) => {
 	return (
 		<div className="image-link-container">
-			<input type="text" className="image-link" placeholder="Enter Image Link Here" />
-			<button className="submit-image">Go!</button>
+			<input onChange={onInputChange} type="text" className="image-link" placeholder="Enter Image Link Here" />
+			<button onClick={onSubmit} className="submit-image">
+				Go!
+			</button>
 		</div>
 	);
 };

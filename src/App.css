@@ -94,3 +94,18 @@ button {
 	width: 100px;
 	margin-left: .2rem;
 }
+
+/* FaceRecognition styles */
+
+.face-recognition-container {
+	display: flex;
+	justify-content: center;
+	background-color: #fff;
+	padding: 2rem;
+	max-width: 600px;
+	margin: 1rem auto;
+}
+
+.face-recognition {
+	max-width: 500px;
+}

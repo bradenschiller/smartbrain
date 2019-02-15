@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import ImageLinkForm from './components/ImageLinkForm';
 import Rank from './components/Rank';
-// import FaceRecognition from './components/FaceRecognition';
+import FaceRecognition from './components/FaceRecognition';
 import Navigation from './components/Navigation';
 import Clarifai from 'clarifai';
 import { clarifai_api_key } from './keys';
@@ -39,8 +39,8 @@ class App extends Component {
 			<div>
 				<Navigation />
 				<Rank />
-				{/*<FaceRecognition />*/}
 				<ImageLinkForm onInputChange={this.onInputChange} onSubmit={this.onSubmit} />
+				<FaceRecognition />
 			</div>
 		);
 	}

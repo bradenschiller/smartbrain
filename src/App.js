@@ -24,7 +24,7 @@ class App extends Component {
 	};
 
 	onSubmit = () => {
-		app.models.predict('d94f289761a143ae80b9b42b892bd5f1', 'https://samples.clarifai.com/face-det.jpg').then(
+		app.models.predict('a403429f2ddf4b49b307e318f00e528b', 'https://samples.clarifai.com/face-det.jpg').then(
 			function(response) {
 				console.log(response);
 			},

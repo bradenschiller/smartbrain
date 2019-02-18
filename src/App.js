@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './CSS/App.css';
 import ImageLinkForm from './components/ImageLinkForm';
 import Rank from './components/Rank';
 import FaceRecognition from './components/FaceRecognition';

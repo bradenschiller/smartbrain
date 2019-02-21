@@ -4,6 +4,7 @@ import ImageLinkForm from './components/ImageLinkForm';
 import Rank from './components/Rank';
 import FaceRecognition from './components/FaceRecognition';
 import Navigation from './components/Navigation';
+import SignIn from './components/SignIn';
 import Clarifai from 'clarifai';
 import { clarifai_api_key } from './keys';
 
@@ -17,7 +18,8 @@ class App extends Component {
 		this.state = {
 			input: '',
 			imageUrl: '',
-			box: {}
+			box: {},
+			route: 'signin'
 		};
 	}
 
@@ -55,13 +57,24 @@ class App extends Component {
 		}
 	};
 
+	onRouteChange = (route) => {
+		this.setState({ route: route });
+		console.log(this.state.route);
+	};
+
 	render() {
 		return (
 			<div>
-				<Navigation />
-				<Rank />
-				<ImageLinkForm onInputChange={this.onInputChange} onSubmit={this.onSubmit} />
-				<FaceRecognition box={this.state.box} imageUrl={this.state.imageUrl} />
+				<Navigation onRouteChange={this.onRouteChange} />
+				{this.state.route === 'signin' ? (
+					<SignIn onRouteChange={this.onRouteChange} />
+				) : (
+					<div>
+						<Rank />
+						<ImageLinkForm onInputChange={this.onInputChange} onSubmit={this.onSubmit} />
+						<FaceRecognition box={this.state.box} imageUrl={this.state.imageUrl} />
+					</div>
+				)}
 			</div>
 		);
 	}

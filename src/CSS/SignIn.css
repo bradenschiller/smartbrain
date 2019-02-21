@@ -1,0 +1,47 @@
+.sign-in-container {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	background-color: white;
+	max-width: 500px;
+	margin: 20vh auto;
+	height: 400px;
+	border: 1px solid lightgrey;
+}
+
+.sign-in-form {
+	display: flex;
+	flex-direction: column;
+	width: 75%;
+}
+
+.form-title-container {
+	background-color: var(--secondary-color);
+	width: 100%;
+	margin-bottom: 1rem;
+}
+
+.form-title {
+	text-align: center;
+	color: #fff;
+}
+
+.sign-in-form > input {
+	margin: 1rem;
+	padding: 1rem;
+	font-size: 1rem;
+}
+
+.sign-in-button {
+	font-size: 1rem;
+	padding: 15px;
+	width: 120px;
+	background-color: rgba(0, 0, 0, 0);
+	margin: 1rem auto;
+}
+
+.sign-up-link {
+	text-align: center;
+	margin: 1rem;
+	color: rgba(0, 0, 0, 0.3);
+}

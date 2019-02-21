@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Navigation = () => {
+const Navigation = ({ onRouteChange }) => {
 	return (
 		<div className="navbar">
 			<ul className="nav-container">
@@ -8,7 +8,9 @@ const Navigation = () => {
 					<a href="#">Sign In</a>
 				</li>
 				<li className="nav-items last-nav-item">
-					<a href="#">Sign Up</a>
+					<a onClick={() => onRouteChange('signin')} href="#">
+						Sign Out
+					</a>
 				</li>
 			</ul>
 		</div>

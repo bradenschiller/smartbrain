@@ -3,17 +3,17 @@ import '../CSS/SignIn.css';
 
 const SignIn = ({ onRouteChange }) => {
 	return (
-		<div className="sign-in-container">
-			<div className="form-title-container">
-				<h4 className="form-title">Sign In</h4>
+		<div className="signin">
+			<div className="title">
+				<h4 className="title__text">Sign In</h4>
 			</div>
-			<div className="sign-in-form">
+			<div className="signin__form">
 				<input placeholder="Enter email address" type="text" className="username" />
 				<input placeholder="Enter password" type="password" className="password" />
-				<button onClick={() => onRouteChange('home')} className="sign-in-button">
+				<button onClick={() => onRouteChange('home')} className="signin__button">
 					Sign In
 				</button>
-				<p onClick={() => onRouteChange('register')} className="sign-up-link">
+				<p onClick={() => onRouteChange('register')} className="signup__link">
 					Register
 				</p>
 			</div>

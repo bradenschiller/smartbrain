@@ -2,16 +2,16 @@ import React from 'react';
 
 const SignIn = ({ onRouteChange }) => {
 	return (
-		<div className="sign-in-container">
-			<div className="form-title-container">
-				<h4 className="form-title">Sign In</h4>
+		<div className="signin">
+			<div className="title">
+				<h4 className="title__text">Sign In</h4>
 			</div>
-			<form className="sign-in-form" action="">
+			<div className="signin__form">
 				<input placeholder="Enter your full name" type="text" className="name" />
 				<input placeholder="Enter email address" type="text" className="email" />
 				<input placeholder="Enter password" type="password" className="password" />
-				<button className="sign-in-button">Register</button>
-			</form>
+				<button className="signin__button">Register</button>
+			</div>
 		</div>
 	);
 };

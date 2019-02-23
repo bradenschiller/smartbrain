@@ -1,18 +1,9 @@
-.bounding-box {
-	position: absolute;
-	box-shadow: 0 0 0 3px #149df2 inset;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	cursor: pointer;
-}
-
-.face-recognition-container {
+.face-recognition {
 	display: flex;
 	justify-content: center;
 }
 
-.face-image-container {
+.face-image {
 	position: absolute;
 	background-color: rgba(0, 0, 0, 0.3);
 	padding: 1rem;
@@ -20,7 +11,16 @@
 	margin: 1rem auto;
 }
 
-.face-recognition {
+.face-image__img {
 	max-width: 700px;
 	max-height: auto;
+}
+
+.bounding-box {
+	position: absolute;
+	box-shadow: 0 0 0 3px #149df2 inset;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	cursor: pointer;
 }

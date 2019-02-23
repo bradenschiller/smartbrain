@@ -1,4 +1,4 @@
-.sign-in-container {
+.signin {
 	display: flex;
 	align-items: center;
 	flex-direction: column;
@@ -9,30 +9,30 @@
 	border: 1px solid lightgrey;
 }
 
-.sign-in-form {
-	display: flex;
-	flex-direction: column;
-	width: 75%;
-}
-
-.form-title-container {
+.title {
 	background-color: var(--secondary-color);
 	width: 100%;
 	margin-bottom: 1rem;
 }
 
-.form-title {
+.title__text {
 	text-align: center;
 	color: #fff;
 }
 
-.sign-in-form > input {
+.signin__form {
+	display: flex;
+	flex-direction: column;
+	width: 75%;
+}
+
+.signin__form > input {
 	margin: 1rem;
 	padding: 1rem;
 	font-size: 1rem;
 }
 
-.sign-in-button {
+.signin__button {
 	font-size: 1rem;
 	padding: 15px;
 	width: 120px;
@@ -40,7 +40,7 @@
 	margin: 1rem auto;
 }
 
-.sign-up-link {
+.signup__link {
 	text-align: center;
 	margin: 1rem;
 	color: rgba(0, 0, 0, 0.3);

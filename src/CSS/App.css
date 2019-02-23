@@ -16,7 +16,7 @@ button {
 /* navigation styles */
 .navbar {
 	background-color: var(--primary-color);
-	padding: .5rem;
+	padding: .2rem;
 }
 
 .nav-container {
@@ -30,6 +30,11 @@ button {
 	margin-left: 1rem;
 	margin-right: 1rem;
 	list-style: none;
+	cursor: pointer;
+}
+
+.nav-items:hover {
+	color: var(--secondary-color);
 }
 
 .nav-items > a {

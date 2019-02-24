@@ -1,12 +1,19 @@
 :root {
-	--primary-color: #38a1f2;
-	--secondary-color: #15202a;
+	--primary-color: #5ad2d3;
+	--secondary-color: #2c4d5e;
+}
+
+html,
+body {
+	padding: 0;
+	margin: 0;
+	height: 100%;
 }
 
 body {
-	margin: 0;
-	padding: 0;
-	background-color: var(--secondary-color);
+	background: linear-gradient(60deg, #34547a, var(--primary-color));
+	/* height: 100%;
+	width: 100%; */
 }
 
 button {
@@ -15,7 +22,6 @@ button {
 
 /* navigation styles */
 .navbar {
-	background-color: var(--primary-color);
 	padding: .2rem;
 }
 
@@ -27,6 +33,7 @@ button {
 .navbar__items {
 	color: #fff;
 	font-weight: bold;
+	font-size: 1.2rem;
 	margin-left: 1rem;
 	margin-right: 1rem;
 	list-style: none;
@@ -38,7 +45,7 @@ button {
 }
 
 .navbar__last-nav-items {
-	margin-right: 2rem;
+	margin-right: 2.5rem;
 }
 
 /* score text styles */

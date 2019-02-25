@@ -25,6 +25,12 @@ class App extends Component {
 		};
 	}
 
+	async componentDidMount() {
+		const response = await fetch('http://localhost:3000/');
+		const data = await response.json();
+		console.log(data);
+	}
+
 	calculateFaceLocation = (response) => {
 		const clarifiaFace = response.outputs[0].data.regions[0].region_info.bounding_box;
 		const image = document.getElementById('inputImg');

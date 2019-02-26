@@ -39,7 +39,9 @@ export default class SignIn extends Component {
 					this.props.onRouteChange('home');
 				}
 			})
-			.catch((err) => console.log(err));
+			.catch((err) => {
+				this.setState({ errMessage: true });
+			});
 	};
 	render() {
 		const { onRouteChange } = this.props;

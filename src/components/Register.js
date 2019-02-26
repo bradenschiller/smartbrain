@@ -21,7 +21,12 @@ export default class Register extends Component {
 			})
 		})
 			.then((data) => data.json())
-			.then((res) => console.log(res))
+			.then((user) => {
+				if (user) {
+					this.props.loadUser(user);
+					this.props.onRouteChange('home');
+				}
+			})
 			.catch((err) => console.log(err));
 	};
 

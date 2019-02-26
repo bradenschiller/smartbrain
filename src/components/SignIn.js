@@ -34,14 +34,13 @@ export default class SignIn extends Component {
 
 		fetch('http://localhost:3000/signin', otherParam)
 			.then((data) => data.json())
-			.then((res) => {
-				if (res === 'success') {
+			.then((user) => {
+				if (user) {
+					this.props.loadUser(user);
 					this.props.onRouteChange('home');
 				}
 			})
-			.catch((err) => {
-				this.setState({ errMessage: true });
-			});
+			.catch((err) => console.log(err));
 	};
 	render() {
 		const { onRouteChange } = this.props;

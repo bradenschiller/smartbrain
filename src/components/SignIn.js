@@ -15,17 +15,23 @@ export default class SignIn extends Component {
 	};
 
 	handleEmail = (e) => {
-		this.setState({ email: e.target.value });
+		this.setState({
+			email: e.target.value
+		});
 	};
 
 	handlePassword = (e) => {
-		this.setState({ password: e.target.value });
+		this.setState({
+			password: e.target.value
+		});
 	};
 
 	submitSignIn = (email, password) => {
 		const otherParam = {
 			method: 'post',
-			headers: { 'Content-Type': 'application/json' },
+			headers: {
+				'Content-Type': 'application/json'
+			},
 			body: JSON.stringify({
 				email: email,
 				password: password
@@ -49,8 +55,8 @@ export default class SignIn extends Component {
 		return (
 			<div className="signin">
 				<div className="title">
-					<h4 className="title__text">Sign In</h4>
-				</div>
+					<h4 className="title__text"> Sign In </h4>{' '}
+				</div>{' '}
 				<div className="signin__form">
 					<input
 						onChange={(e) => this.handleEmail(e)}
@@ -65,12 +71,12 @@ export default class SignIn extends Component {
 						className="password"
 					/>
 					<button onClick={() => this.handleClick(email, password)} className="signin__button">
-						Sign In
-					</button>
+						Sign In{' '}
+					</button>{' '}
 					<p onClick={() => onRouteChange('register')} className="signup__link">
-						Register
-					</p>
-				</div>
+						Register{' '}
+					</p>{' '}
+				</div>{' '}
 			</div>
 		);
 	}

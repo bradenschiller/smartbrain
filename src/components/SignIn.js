@@ -27,6 +27,7 @@ export default class SignIn extends Component {
 	};
 
 	submitSignIn = (email, password) => {
+		console.log(email, password);
 		const otherParam = {
 			method: 'post',
 			headers: {

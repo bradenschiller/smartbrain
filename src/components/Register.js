@@ -46,7 +46,7 @@ export default class Register extends Component {
 		return (
 			<div className="signin">
 				<div className="title">
-					<h4 className="title__text">Sign In</h4>
+					<h4 className="title__text">Register</h4>
 				</div>
 				<div className="signin__form">
 					<input

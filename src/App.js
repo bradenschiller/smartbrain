@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './CSS/App.css';
 import ImageLinkForm from './components/ImageLinkForm';
 import Rank from './components/Rank';
@@ -9,30 +9,31 @@ import Register from './components/Register';
 import Clarifai from 'clarifai';
 import { clarifai_api_key } from './keys';
 
-const app = new Clarifai.App({
-	apiKey: clarifai_api_key
-});
-class App extends Component {
-	constructor(props) {
-		super(props);
+const App = () => {
+	const initalState = {
+		input: '',
+		imageUrl: '',
+		box: {},
+		route: 'signin',
+		isSignedIn: false,
+		user: {
+			id: '',
+			name: '',
+			email: '',
+			entries: 0,
+			joined: ''
+		}
+	};
 
-		this.state = {
-			input: '',
-			imageUrl: '',
-			box: {},
-			route: 'signin',
-			isSignedIn: false,
-			user: {
-				id: '',
-				name: '',
-				email: '',
-				entries: 0,
-				joined: ''
-			}
-		};
-	}
+	const app = new Clarifai.App({
+		apiKey: clarifai_api_key
+	});
 
-	calculateFaceLocation = (response) => {
+	const [ state, setState ] = useState(initalState);
+
+	console.log(state);
+
+	const calculateFaceLocation = (response) => {
 		const clarifiaFace = response.outputs[0].data.regions[0].region_info.bounding_box;
 		const image = document.getElementById('inputImg');
 		const width = Number(image.width);
@@ -45,19 +46,20 @@ class App extends Component {
 		};
 	};
 
-	displayFaceBox = (box) => {
-		this.setState({ box: box });
+	const displayFaceBox = (box) => {
+		setState({ ...state, box: box });
 	};
 
-	onInputChange = (e) => {
-		this.setState({
+	const onInputChange = (e) => {
+		setState({
+			...state,
 			input: e.target.value
 		});
 	};
 
-	onSubmit = async () => {
-		const { input } = this.state;
-		this.setState({ imageUrl: input });
+	const onSubmit = async () => {
+		const { input } = state;
+		setState({ ...state, imageUrl: input });
 		try {
 			const response = await app.models.predict(Clarifai.FACE_DETECT_MODEL, input);
 			if (response) {
@@ -65,30 +67,30 @@ class App extends Component {
 					method: 'put',
 					headers: { 'Content-Type': 'application/json' },
 					body: JSON.stringify({
-						id: this.state.user.id
+						id: state.user.id
 					})
 				});
 				const count = await data.json();
-				console.log(count);
-				this.setState(Object.assign(this.state.user, { entries: count }));
+				setState({ ...state, entries: count });
 			}
-			this.displayFaceBox(this.calculateFaceLocation(response));
+			displayFaceBox(calculateFaceLocation(response));
 		} catch (err) {
 			alert(err);
 		}
 	};
 
-	onRouteChange = (route) => {
+	const onRouteChange = (route) => {
 		if (route === 'signout') {
-			this.setState({ isSignedIn: false });
+			setState(initalState);
 		} else if (route === 'home') {
-			this.setState({ isSignedIn: true });
+			setState({ ...state, isSignedIn: true });
 		}
-		this.setState({ route: route });
+		setState({ ...state, route: route });
 	};
 
-	loadUser = (user) => {
-		this.setState({
+	const loadUser = (user) => {
+		setState({
+			...state,
 			user: {
 				id: user.id,
 				name: user.name,
@@ -97,28 +99,24 @@ class App extends Component {
 				joined: user.joined
 			}
 		});
-		console.log(this.state.user);
 	};
-
-	render() {
-		const { isSignedIn, box, imageUrl, route } = this.state;
-		return (
-			<div>
-				<Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
-				{route === 'home' ? (
-					<div>
-						<Rank user={this.state.user} />
-						<ImageLinkForm onInputChange={this.onInputChange} onSubmit={this.onSubmit} />
-						<FaceRecognition box={box} imageUrl={imageUrl} />
-					</div>
-				) : route === 'signin' ? (
-					<SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
-				) : (
-					<Register loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
-				)}
-			</div>
-		);
-	}
-}
+	const { isSignedIn, box, imageUrl, route } = state;
+	return (
+		<div>
+			<Navigation isSignedIn={isSignedIn} onRouteChange={onRouteChange} />
+			{route === 'home' ? (
+				<div>
+					<Rank user={state.user} />
+					<ImageLinkForm onInputChange={onInputChange} onSubmit={onSubmit} />
+					<FaceRecognition box={box} imageUrl={imageUrl} />
+				</div>
+			) : route === 'signin' ? (
+				<SignIn loadUser={loadUser} onRouteChange={onRouteChange} />
+			) : (
+				<Register loadUser={loadUser} onRouteChange={onRouteChange} />
+			)}
+		</div>
+	);
+};
 
 export default App;
